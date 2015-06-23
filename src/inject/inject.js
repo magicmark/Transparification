@@ -1,7 +1,7 @@
 'use strict';
 
-//var endpoint = 'http://transparification.herokuapp.com';
-var endpoint = 'http://localhost:3451';
+var endpoint = 'http://transparification.herokuapp.com';
+//var endpoint = 'http://localhost:3451';
 
 var box = '\
 <!-- Inserted by Transparification Chrome Extension -->\
