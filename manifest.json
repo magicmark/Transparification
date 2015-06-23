@@ -1,0 +1,35 @@
+{
+  "name": "Transparification",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "description": "\"It's time for a Chrome plugin that ads an ownership info bar to every news site.\"",
+  "homepage_url": "https://github.com/magicmark/Transparification",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "default_locale": "en",
+  "permissions": [
+    "<all_urls>"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "css": [
+        "src/inject/inject.css"
+      ]
+    },
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "js/jquery/jquery.js",
+        "src/inject/inject.js"
+      ]
+    }
+  ]
+}
