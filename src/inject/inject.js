@@ -1,6 +1,7 @@
 'use strict';
 
-var endpoint = 'http://transparification.herokuapp.com';
+//var endpoint = 'http://transparification.herokuapp.com';
+var endpoint = 'http://localhost:3451';
 
 var box = '\
 <!-- Inserted by Transparification Chrome Extension -->\
@@ -14,15 +15,20 @@ chrome.extension.sendMessage({}, function(response) {
 
     $(document.body).prepend(box);
 
-    $.get(endpoint + "/info/" + window.location.hostname, function (result) {
-      console.dir(result);
-      if (result.success) {
-        $("#transparification").text(result.info);
-      } else {
-        $("#transparification").text("Could not find any data relating to this site. Contribute?");        
+    $.ajax({
+      type: "GET",
+      beforeSend: function (req) {
+        req.setRequestHeader("API-Version", "0.2");
+      },
+      url: endpoint + "/info/" + window.location.hostname,
+      success: function (result) {
+        if (result.success) {
+          $("#transparification").text(result.info);
+        } else {
+          $("#transparification").text("Could not find any data relating to this site. Contribute?");        
+        }
       }
-
-    })
+    });
 
 	}, 10);
 });
